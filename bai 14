@@ -1,0 +1,37 @@
+<?php
+$dir = "./tamthoi/";    
+
+if($_FILES['newfile']['name'] != ""){
+    $filename = $dir . $_FILES['newfile']['name'];
+    if(move_uploaded_file($_FILES['newfile']['tmp_name'], $filename)){
+        $filename;
+        echo "upload success!";
+    } else {
+        echo "upload failed";
+    }
+echo "<pre>";
+var_dump($_FILES);
+
+} else {
+    echo "haven't choosen file yet!";
+}
+
+?>
+<a href=""></a>
+<?php
+$dir = "./tamthoi/";
+$files = scandir($dir);
+foreach($files as $file){
+    if($file != '.' && $file != '..'){
+        echo $file .'<br>';
+    }
+}
+?>
+
+<html>
+    <form action="" method = "post" enctype = "multipart/form-data">
+        file upload: <br> 
+        <input type="file" name="newfile"> <br>
+        <input type="submit" value = "Upload">
+    </form>
+</html>
